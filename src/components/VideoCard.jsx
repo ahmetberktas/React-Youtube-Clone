@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import millify from "millify";
+import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ video }) => {
-  const [isHover, setIsHover] = useState(false);
+  const navigate = useNavigate();
   return (
     <div
-      className="p-4"
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      onClick={() => navigate(`/watch/${video.videoId}`)}
+      className="p-4 cursor-pointer"
     >
       <div className="relative">
         <img
