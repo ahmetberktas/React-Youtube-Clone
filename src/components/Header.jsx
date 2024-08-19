@@ -1,11 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { IoIosNotifications } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const searchText = e.target[0].value;
+    navigate(`/results?search_query=${searchText}`)
+  }
   return (
     <header className="bg-black p-4 flex items-center justify-between flex-wrap">
       {/* Sol Taraf */}
@@ -25,7 +31,7 @@ const Header = () => {
       {/* Orta Kısım */}
       <div className="flex-grow max-w-full md:max-w-lg mx-4 mb-2 md:mb-0">
         <div className="relative">
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Ara"

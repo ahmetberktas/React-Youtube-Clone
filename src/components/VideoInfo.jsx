@@ -24,8 +24,10 @@ const VideoInfo = () => {
   };
 
   useEffect(() => {
+    setDetail(null);
+    setChannel(null);
     getInfos();
-  }, []);
+  }, [id]);
 
   if (!detail || !channel) {
     return <Loading type={"detail"}></Loading>;
